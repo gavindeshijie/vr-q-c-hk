@@ -28,6 +28,8 @@ npm run deploy:api
 
 Cloudflare 本地调试和 iOS 真机调试见 [docs/DEPLOY_3D_SCAN.md](./docs/DEPLOY_3D_SCAN.md)。
 
+授权清单见 [docs/AUTHORIZATION_CHECKLIST.md](./docs/AUTHORIZATION_CHECKLIST.md)。授权后可按脚本自动创建 Cloudflare R2/D1、部署 Worker API，并替换 Apple Team ID / App Store ID。
+
 ## 构建
 
 ~~~bash

@@ -24,6 +24,8 @@ MAX_IMAGES_ZIP_MB=1024
 
 第一版 Web 继续由 GitHub Pages 自动部署。API 建议部署到 Cloudflare Worker 或 Cloudflare Pages Functions；如果 API 使用独立子域，例如 `https://api.vr.q-c.hk`，把 `VITE_API_BASE_URL` 改成该地址。
 
+授权清单和自动化脚本见 [AUTHORIZATION_CHECKLIST.md](./AUTHORIZATION_CHECKLIST.md)。
+
 ## 2. iOS 配置
 
 - App Name：VR QC Scanner

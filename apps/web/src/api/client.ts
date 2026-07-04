@@ -10,6 +10,21 @@ import type {
 const configuredBase = import.meta.env.VITE_API_BASE_URL as string | undefined;
 export const apiBaseUrl = (configuredBase && configuredBase !== "/") ? configuredBase.replace(/\/$/, "") : "";
 
+async function requestJson<T>(input: RequestInfo | URL, init?: RequestInit): Promise<ApiResponse<T>> {
+  try {
+    const response = await fetch(input, init);
+    return parseJson<T>(response);
+  } catch {
+    return {
+      ok: false,
+      error: {
+        code: "API_UNREACHABLE",
+        message: "扫描 API 当前无法连接。请先部署 Cloudflare Worker API，或检查 api.vr.q-c.hk 域名。"
+      }
+    };
+  }
+}
+
 async function parseJson<T>(response: Response): Promise<ApiResponse<T>> {
   const contentType = response.headers.get("content-type") ?? "";
   if (!contentType.includes("application/json")) {
@@ -37,21 +52,19 @@ async function parseJson<T>(response: Response): Promise<ApiResponse<T>> {
 }
 
 export async function createScan(request: CreateScanRequest): Promise<ApiResponse<CreateScanResponse>> {
-  const response = await fetch(`${apiBaseUrl}/api/scans`, {
+  return requestJson<CreateScanResponse>(`${apiBaseUrl}/api/scans`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(request)
   });
-  return parseJson<CreateScanResponse>(response);
 }
 
 export async function getScan(scanId: string): Promise<ApiResponse<PublicScanRecord>> {
-  const response = await fetch(`${apiBaseUrl}/api/scans/${encodeURIComponent(scanId)}`);
-  return parseJson<PublicScanRecord>(response);
+  return requestJson<PublicScanRecord>(`${apiBaseUrl}/api/scans/${encodeURIComponent(scanId)}`);
 }
 
 export async function completeScan(scanId: string, uploadToken: string, request: CompleteScanRequest): Promise<ApiResponse<PublicScanRecord>> {
-  const response = await fetch(`${apiBaseUrl}/api/scans/${encodeURIComponent(scanId)}/complete`, {
+  return requestJson<PublicScanRecord>(`${apiBaseUrl}/api/scans/${encodeURIComponent(scanId)}/complete`, {
     method: "POST",
     headers: {
       "authorization": `Bearer ${uploadToken}`,
@@ -59,10 +72,8 @@ export async function completeScan(scanId: string, uploadToken: string, request:
     },
     body: JSON.stringify(request)
   });
-  return parseJson<PublicScanRecord>(response);
 }
 
 export async function listScans(): Promise<ApiResponse<ScanHistoryItem[]>> {
-  const response = await fetch(`${apiBaseUrl}/api/scans`);
-  return parseJson<ScanHistoryItem[]>(response);
+  return requestJson<ScanHistoryItem[]>(`${apiBaseUrl}/api/scans`);
 }
