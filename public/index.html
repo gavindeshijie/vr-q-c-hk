@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Secret Language Trade</title>
+    <meta
+      name="description"
+      content="Secret Language Trade multilingual mobile language selection page."
+    >
+    <style>
+      :root {
+        --bg: #04010b;
+        --ink: #f7edff;
+        --muted: #cdb9ff;
+        --violet: #9a46ff;
+        --violet-hot: #c479ff;
+        --violet-deep: #3b0b75;
+        --blue-violet: #4014c8;
+        --panel: rgba(5, 4, 14, 0.82);
+        --line: rgba(190, 111, 255, 0.86);
+        --edge: rgba(236, 215, 255, 0.92);
+        --glow: 0 0 10px rgba(173, 83, 255, 0.95), 0 0 30px rgba(105, 35, 255, 0.75);
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #05000a;
+        font-family: "Trebuchet MS", "Noto Sans", "Noto Sans SC", "Noto Sans Thai", Arial, sans-serif;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        overflow-x: hidden;
+      }
+
+      .poster {
+        position: relative;
+        isolation: isolate;
+        width: min(100vw, 430px);
+        min-height: max(100svh, 640px);
+        overflow: hidden;
+        padding: 16px 17px 14px;
+        background:
+          radial-gradient(circle at 50% 6%, rgba(166, 62, 255, 0.58), transparent 12%),
+          radial-gradient(ellipse at 50% 17%, rgba(79, 27, 201, 0.58), transparent 27%),
+          radial-gradient(ellipse at 50% 52%, rgba(56, 8, 127, 0.48), transparent 44%),
+          linear-gradient(180deg, #020008 0%, #070014 38%, #060011 100%);
+      }
+
+      .poster::before {
+        content: "";
+        position: absolute;
+        z-index: -3;
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(214, 145, 255, 0.38) 0 1px, transparent 2px),
+          radial-gradient(circle at 72% 16%, rgba(142, 69, 255, 0.38) 0 1px, transparent 2px),
+          linear-gradient(105deg, transparent 0 44%, rgba(111, 30, 255, 0.22) 44.2% 44.6%, transparent 45%),
+          linear-gradient(72deg, transparent 0 57%, rgba(195, 116, 255, 0.18) 57.4% 57.9%, transparent 58.5%);
+        background-size: 34px 34px, 42px 42px, 100% 100%, 100% 100%;
+        filter: saturate(1.2);
+      }
+
+      .poster::after {
+        content: "";
+        position: absolute;
+        z-index: -2;
+        left: -20%;
+        right: -20%;
+        bottom: -4%;
+        height: 31%;
+        background:
+          linear-gradient(90deg, transparent 0 10%, rgba(159, 76, 255, 0.65) 10.4% 10.8%, transparent 11.2% 19%, rgba(192, 112, 255, 0.55) 19.3% 19.7%, transparent 20% 80%, rgba(118, 45, 255, 0.64) 80.2% 80.6%, transparent 81%),
+          repeating-linear-gradient(0deg, transparent 0 14px, rgba(113, 42, 244, 0.22) 15px, transparent 17px),
+          repeating-linear-gradient(90deg, transparent 0 32px, rgba(207, 124, 255, 0.2) 33px, transparent 35px);
+        transform: perspective(240px) rotateX(58deg);
+        transform-origin: bottom center;
+        box-shadow: inset 0 18px 42px rgba(170, 71, 255, 0.25);
+      }
+
+      .globe {
+        position: absolute;
+        z-index: -1;
+        top: 24px;
+        left: 28px;
+        right: 28px;
+        height: 210px;
+        border-radius: 50%;
+        border: 1px solid rgba(174, 91, 255, 0.38);
+        background:
+          radial-gradient(circle at 34% 55%, rgba(157, 79, 255, 0.25) 0 8%, transparent 8.5%),
+          radial-gradient(circle at 68% 57%, rgba(156, 70, 255, 0.28) 0 10%, transparent 10.5%),
+          repeating-radial-gradient(ellipse at center, transparent 0 13px, rgba(151, 85, 255, 0.22) 14px, transparent 16px),
+          repeating-linear-gradient(90deg, transparent 0 17px, rgba(122, 65, 255, 0.16) 18px, transparent 19px);
+        box-shadow: inset 0 0 35px rgba(119, 43, 255, 0.48), 0 0 34px rgba(151, 70, 255, 0.46);
+        opacity: 0.72;
+        mask-image: radial-gradient(ellipse at center, black 0 68%, transparent 70%);
+      }
+
+      .globe::before,
+      .globe::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .globe::before {
+        background:
+          radial-gradient(ellipse at 25% 54%, rgba(122, 73, 255, 0.28) 0 12%, transparent 12.8%),
+          radial-gradient(ellipse at 36% 48%, rgba(143, 84, 255, 0.22) 0 9%, transparent 9.8%),
+          radial-gradient(ellipse at 69% 54%, rgba(128, 66, 255, 0.3) 0 14%, transparent 14.8%),
+          radial-gradient(ellipse at 77% 44%, rgba(111, 58, 230, 0.2) 0 7%, transparent 7.8%),
+          radial-gradient(circle at 18% 43%, rgba(217, 170, 255, 0.68) 0 0.7px, transparent 1.2px),
+          radial-gradient(circle at 30% 58%, rgba(188, 122, 255, 0.58) 0 0.7px, transparent 1.2px),
+          radial-gradient(circle at 67% 49%, rgba(205, 143, 255, 0.64) 0 0.7px, transparent 1.2px),
+          radial-gradient(circle at 78% 58%, rgba(170, 101, 255, 0.5) 0 0.7px, transparent 1.2px);
+        background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 9px 9px, 11px 11px, 9px 9px, 12px 12px;
+        opacity: 0.18;
+        mix-blend-mode: screen;
+      }
+
+      .globe::after {
+        inset: 5px 0 26px;
+        border-top: 1px solid rgba(211, 151, 255, 0.36);
+        box-shadow:
+          inset 0 19px 0 -18px rgba(172, 91, 255, 0.42),
+          inset 0 55px 0 -54px rgba(172, 91, 255, 0.34),
+          inset 0 91px 0 -90px rgba(172, 91, 255, 0.24);
+        opacity: 0.28;
+      }
+
+      .city {
+        position: absolute;
+        z-index: -1;
+        bottom: 82px;
+        width: 110px;
+        height: 392px;
+        opacity: 0.62;
+        filter: drop-shadow(0 0 9px rgba(126, 54, 216, 0.85));
+      }
+
+      .city.left {
+        left: -24px;
+      }
+
+      .city.right {
+        right: -24px;
+        transform: scaleX(-1);
+      }
+
+      .city::before,
+      .city::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        pointer-events: none;
+      }
+
+      .city::before {
+        left: 6px;
+        width: 104px;
+        height: 260px;
+        background:
+          linear-gradient(90deg, transparent 0 6%, rgba(135, 77, 225, 0.25) 6.5% 7.5%, transparent 8% 24%, rgba(180, 108, 255, 0.3) 24.5% 25.5%, transparent 26% 51%, rgba(148, 72, 255, 0.25) 51.5% 52.5%, transparent 53% 76%, rgba(201, 121, 255, 0.26) 76.5% 77.5%, transparent 78%),
+          repeating-linear-gradient(0deg, transparent 0 7px, rgba(205, 142, 255, 0.24) 8px, transparent 10px),
+          linear-gradient(180deg, transparent 0 8%, rgba(20, 8, 45, 0.55) 24%, rgba(5, 1, 15, 0.94));
+        clip-path: polygon(0 36%, 13% 36%, 13% 13%, 29% 13%, 29% 31%, 42% 31%, 42% 6%, 58% 6%, 58% 26%, 72% 26%, 72% 17%, 86% 17%, 86% 43%, 100% 43%, 100% 100%, 0 100%);
+      }
+
+      .city::after {
+        left: 20px;
+        width: 88px;
+        height: 104px;
+        background:
+          linear-gradient(165deg, rgba(188, 100, 255, 0.42), transparent 42%),
+          repeating-linear-gradient(90deg, rgba(149, 61, 255, 0.2) 0 2px, transparent 3px 14px),
+          linear-gradient(180deg, rgba(20, 5, 40, 0.75), rgba(4, 1, 12, 0.96));
+        clip-path: polygon(0 28%, 100% 0, 100% 100%, 0 100%);
+        opacity: 0.8;
+      }
+
+      .tower {
+        position: absolute;
+        bottom: 0;
+        width: 15px;
+        background:
+          repeating-linear-gradient(0deg, rgba(222, 175, 255, 0.82) 0 1px, transparent 2px 10px),
+          linear-gradient(180deg, rgba(85, 35, 168, 0.3), rgba(11, 3, 30, 0.94));
+        border-left: 1px solid rgba(198, 112, 255, 0.52);
+        border-right: 1px solid rgba(198, 112, 255, 0.36);
+        opacity: 0.42;
+      }
+
+      .tower:nth-child(1) { left: 8px; height: 176px; }
+      .tower:nth-child(2) { left: 30px; height: 244px; }
+      .tower:nth-child(3) { left: 56px; height: 202px; }
+      .tower:nth-child(4) { left: 76px; height: 132px; }
+
+      .beam {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(214, 151, 255, 0.95), transparent);
+        box-shadow: 0 0 12px rgba(184, 91, 255, 0.95);
+        transform-origin: left center;
+      }
+
+      .beam.one {
+        top: 54px;
+        left: 13px;
+        width: 136px;
+        transform: rotate(18deg);
+      }
+
+      .beam.two {
+        top: 438px;
+        left: 10px;
+        width: 104px;
+        transform: rotate(-12deg);
+      }
+
+      .beam.three {
+        top: 512px;
+        right: 10px;
+        width: 122px;
+        transform: rotate(12deg);
+      }
+
+      .side-sign {
+        position: absolute;
+        z-index: -1;
+        color: rgba(231, 202, 255, 0.72);
+        font-size: 8px;
+        line-height: 1.05;
+        letter-spacing: 0.4px;
+        text-align: center;
+        text-shadow: 0 0 8px rgba(177, 74, 255, 0.82);
+        opacity: 0.78;
+      }
+
+      .side-sign.left {
+        left: 30px;
+        top: 306px;
+        transform: rotate(-8deg);
+      }
+
+      .side-sign.right {
+        right: 20px;
+        top: 310px;
+        width: 64px;
+        transform: rotate(7deg);
+      }
+
+      .hero {
+        text-align: center;
+        text-shadow: 0 0 10px rgba(214, 171, 255, 0.95), 0 0 22px rgba(144, 72, 255, 0.75);
+      }
+
+      .wings {
+        position: absolute;
+        top: 39px;
+        width: 76px;
+        height: 39px;
+        opacity: 0.82;
+        filter: drop-shadow(0 0 7px rgba(183, 87, 255, 0.82));
+      }
+
+      .wings.left {
+        left: 54px;
+        transform: skewX(22deg);
+      }
+
+      .wings.right {
+        right: 54px;
+        transform: scaleX(-1) skewX(22deg);
+      }
+
+      .wings span {
+        display: block;
+        height: 6px;
+        margin: 4px 0;
+        border: 1px solid rgba(237, 207, 255, 0.72);
+        background: linear-gradient(90deg, transparent, rgba(221, 161, 255, 0.96), rgba(92, 30, 220, 0.35));
+        clip-path: polygon(0 0, 86% 0, 100% 100%, 13% 100%);
+      }
+
+      .title-cn {
+        margin: 18px 0 4px;
+        font-size: 12.5px;
+        font-weight: 500;
+        letter-spacing: 1.8px;
+      }
+
+      .title-en {
+        margin: 0;
+        font-size: 11.8px;
+        font-weight: 500;
+      }
+
+      .title-th,
+      .title-vi {
+        margin: 3px 0 0;
+        color: #e6d9ff;
+        font-size: 11.2px;
+        font-weight: 500;
+      }
+
+      .language-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px 13px;
+        width: min(100%, 277px);
+        margin: 10px auto 7px;
+      }
+
+      .language-card {
+        display: block;
+        position: relative;
+        min-height: 149px;
+        padding: 2px 8px 10px;
+        border: 0;
+        border-radius: 0;
+        color: var(--ink);
+        background: transparent;
+        box-shadow: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        appearance: none;
+        transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+      }
+
+      .language-card::before,
+      .language-card::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .language-card::before {
+        display: none;
+      }
+
+      .language-card::after {
+        z-index: 0;
+        inset: 21px 16px 18px;
+        border-radius: 2px;
+        background:
+          radial-gradient(ellipse at 48% 8%, rgba(84, 34, 126, 0.12), transparent 54%),
+          linear-gradient(180deg, rgba(7, 6, 17, 0.98), rgba(1, 1, 7, 0.99) 72%, rgba(10, 4, 20, 0.96));
+        clip-path: polygon(5% 0, 95% 0, 100% 8%, 100% 92%, 95% 100%, 5% 100%, 0 92%, 0 8%);
+        box-shadow:
+          inset 0 0 16px rgba(94, 45, 140, 0.28),
+          inset 0 -10px 18px rgba(76, 19, 118, 0.24);
+        opacity: 1;
+      }
+
+      .language-card > :not(.frame-armor) {
+        position: relative;
+        z-index: 2;
+      }
+
+      .frame-armor {
+        position: absolute;
+        z-index: 3;
+        inset: -8px -7px;
+        pointer-events: none;
+        background: url("assets/card-frame-reference.png") center / 100% 100% no-repeat;
+        filter:
+          drop-shadow(0 0 3px rgba(220, 173, 255, 0.62))
+          drop-shadow(0 0 9px rgba(103, 36, 222, 0.62));
+      }
+
+      .frame-armor::before,
+      .frame-armor::after {
+        display: none;
+      }
+
+      .language-card:hover,
+      .language-card:focus-visible,
+      .language-card.is-selected {
+        transform: translateY(-1px);
+        filter: brightness(1.04);
+        outline: none;
+        box-shadow: none;
+      }
+
+      .flag {
+        position: relative;
+        display: block;
+        width: 130px;
+        height: 75px;
+        margin: 0 auto 14px;
+        overflow: visible;
+        background: transparent;
+        border-radius: 9px;
+        box-shadow: none;
+        transform: perspective(120px) rotateY(-4deg);
+      }
+
+      .flag img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter:
+          drop-shadow(0 6px 8px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 9px rgba(255, 35, 80, 0.28));
+      }
+
+      .flag > :not(img) {
+        display: none;
+      }
+
+      .flag::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 38% 12%, rgba(255, 255, 255, 0.55), transparent 25%),
+          linear-gradient(105deg, transparent 0 23%, rgba(255, 255, 255, 0.26) 31%, transparent 39% 64%, rgba(0, 0, 0, 0.22) 72%, transparent 83%);
+        mix-blend-mode: screen;
+        display: none;
+      }
+
+      .flag-wave {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 18%, rgba(0, 0, 0, 0.2) 36%, transparent 54%, rgba(255, 255, 255, 0.17) 72%, transparent),
+          repeating-linear-gradient(90deg, transparent 0 18px, rgba(0, 0, 0, 0.13) 19px 24px, transparent 25px 37px);
+        opacity: 0.9;
+      }
+
+      .star {
+        position: absolute;
+        width: var(--s, 20px);
+        height: var(--s, 20px);
+        background: var(--star, #ffd845);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 56%, 79% 91%, 50% 70%, 21% 91%, 32% 56%, 2% 35%, 39% 35%);
+      }
+
+      .crescent {
+        position: absolute;
+        border-radius: 50%;
+        background: #fff;
+      }
+
+      .crescent::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .flag-china {
+        background: linear-gradient(180deg, #f71b18, #be0808);
+      }
+
+      .flag-china .big-star {
+        --s: 28px;
+        left: 15px;
+        top: 14px;
+      }
+
+      .flag-china .small:nth-of-type(2) { --s: 8px; left: 50px; top: 12px; transform: rotate(22deg); }
+      .flag-china .small:nth-of-type(3) { --s: 8px; left: 60px; top: 21px; transform: rotate(42deg); }
+      .flag-china .small:nth-of-type(4) { --s: 8px; left: 60px; top: 35px; transform: rotate(4deg); }
+      .flag-china .small:nth-of-type(5) { --s: 8px; left: 49px; top: 44px; transform: rotate(28deg); }
+
+      .flag-singapore {
+        background: linear-gradient(#e00025 0 50%, #f4f4f5 50% 100%);
+      }
+
+      .flag-singapore .crescent {
+        width: 27px;
+        height: 27px;
+        left: 16px;
+        top: 8px;
+      }
+
+      .flag-singapore .crescent::after {
+        width: 25px;
+        height: 25px;
+        left: 8px;
+        top: 1px;
+        background: #e00025;
+      }
+
+      .flag-singapore .star { --s: 8px; }
+      .flag-singapore .s1 { left: 50px; top: 8px; }
+      .flag-singapore .s2 { left: 60px; top: 17px; }
+      .flag-singapore .s3 { left: 56px; top: 30px; }
+      .flag-singapore .s4 { left: 43px; top: 30px; }
+      .flag-singapore .s5 { left: 39px; top: 17px; }
+
+      .flag-thai {
+        background: linear-gradient(#d91b29 0 16%, #fff 16% 31%, #1d2f7f 31% 69%, #fff 69% 84%, #d91b29 84% 100%);
+      }
+
+      .flag-vietnam {
+        background: linear-gradient(180deg, #df0808, #b80000);
+      }
+
+      .flag-vietnam .star {
+        --s: 36px;
+        left: 38px;
+        top: 13px;
+      }
+
+      .flag-malaysia {
+        background:
+          linear-gradient(90deg, #071d83 0 45%, transparent 45%),
+          repeating-linear-gradient(180deg, #e51b2b 0 8px, #fff 8px 16px);
+      }
+
+      .flag-malaysia .crescent {
+        width: 24px;
+        height: 24px;
+        left: 15px;
+        top: 11px;
+        background: #ffd845;
+      }
+
+      .flag-malaysia .crescent::after {
+        width: 22px;
+        height: 22px;
+        left: 8px;
+        top: 1px;
+        background: #071d83;
+      }
+
+      .flag-malaysia .star {
+        --s: 18px;
+        left: 42px;
+        top: 14px;
+      }
+
+      .flag-laos {
+        background: linear-gradient(#d41122 0 24%, #12216f 24% 76%, #d41122 76% 100%);
+      }
+
+      .flag-laos .disc {
+        position: absolute;
+        width: 33px;
+        height: 33px;
+        left: 40px;
+        top: 14px;
+        border-radius: 50%;
+        background: #f2f0f3;
+        box-shadow: inset -5px -5px 8px rgba(0, 0, 0, 0.18);
+      }
+
+      .flag.flag-china,
+      .flag.flag-singapore,
+      .flag.flag-thai,
+      .flag.flag-vietnam,
+      .flag.flag-malaysia,
+      .flag.flag-laos {
+        background: transparent;
+      }
+
+      .lang-name {
+        display: block;
+        margin-top: 1px;
+        font-size: 17px;
+        line-height: 1.1;
+        font-weight: 500;
+        text-shadow: 0 0 9px rgba(235, 214, 255, 0.88);
+      }
+
+      .lang-name.big {
+        font-size: 18.4px;
+      }
+
+      .language-card[data-lang="ms"] .lang-name {
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      .price-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 6px;
+        color: #d5b9ff;
+        font-size: 7.9px;
+        line-height: 1.15;
+        white-space: nowrap;
+      }
+
+      .currency {
+        min-width: 20px;
+        color: #c481ff;
+        font-size: 17px;
+        line-height: 1;
+        text-shadow: 0 0 8px rgba(200, 112, 255, 1), 0 0 16px rgba(130, 59, 255, 0.95);
+      }
+
+      .currency.rm {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .features {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+        width: min(100%, 390px);
+        margin: 10px auto 0;
+      }
+
+      .feature {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 31px 1fr;
+        align-items: center;
+        gap: 5px;
+        min-width: 0;
+        text-align: left;
+        color: #f0e7ff;
+        text-shadow: 0 0 8px rgba(163, 80, 255, 0.84);
+      }
+
+      .feature-icon {
+        display: grid;
+        place-items: center;
+        width: 29px;
+        height: 29px;
+        color: #dcb4ff;
+        filter: drop-shadow(0 0 7px rgba(171, 82, 255, 0.95));
+      }
+
+      .feature-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: currentColor;
+        fill: rgba(112, 37, 219, 0.12);
+      }
+
+      .feature-title {
+        display: block;
+        font-size: 8.5px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .feature-sub {
+        display: block;
+        margin-top: 2px;
+        color: #fbf8ff;
+        font-size: 5.8px;
+        letter-spacing: 1.1px;
+      }
+
+      .feature:nth-child(3) .feature-sub,
+      .feature:nth-child(4) .feature-sub {
+        line-height: 1.15;
+      }
+
+      @media (min-height: 700px) {
+        .language-grid {
+          gap: clamp(18px, calc(16px + (100svh - 700px) * 0.14), 34px) 13px;
+          margin-top: clamp(12px, calc(10px + (100svh - 700px) * 0.04), 18px);
+        }
+
+        .language-card {
+          min-height: clamp(155px, calc(149px + (100svh - 700px) * 0.19), 183px);
+        }
+
+        .features {
+          margin-top: clamp(12px, calc(10px + (100svh - 700px) * 0.08), 24px);
+        }
+
+        .features::after {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          left: -42px;
+          right: -42px;
+          top: 18px;
+          height: clamp(130px, calc(100svh - 650px), 245px);
+          pointer-events: none;
+          background:
+            linear-gradient(90deg, transparent 0 10%, rgba(159, 76, 255, 0.65) 10.4% 10.8%, transparent 11.2% 19%, rgba(192, 112, 255, 0.55) 19.3% 19.7%, transparent 20% 80%, rgba(118, 45, 255, 0.64) 80.2% 80.6%, transparent 81%),
+            repeating-linear-gradient(0deg, transparent 0 14px, rgba(113, 42, 244, 0.24) 15px, transparent 17px),
+            repeating-linear-gradient(90deg, transparent 0 32px, rgba(207, 124, 255, 0.22) 33px, transparent 35px);
+          transform: perspective(230px) rotateX(58deg);
+          transform-origin: top center;
+          opacity: 0.74;
+          box-shadow: inset 0 18px 42px rgba(170, 71, 255, 0.24);
+        }
+      }
+
+      @media (max-width: 370px) {
+        .poster {
+          padding-inline: 13px;
+        }
+
+        .language-grid {
+          gap: 11px;
+          width: min(100%, 300px);
+        }
+
+        .language-card {
+          min-height: 138px;
+          padding-inline: 7px;
+        }
+
+        .flag {
+          width: 110px;
+          height: 63px;
+        }
+
+        .features {
+          gap: 4px;
+        }
+
+        .feature {
+          grid-template-columns: 29px 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="poster" aria-label="Secret Language Trade language selector">
+      <div class="globe" aria-hidden="true"></div>
+      <div class="city left" aria-hidden="true">
+        <span class="tower"></span>
+        <span class="tower"></span>
+        <span class="tower"></span>
+        <span class="tower"></span>
+      </div>
+      <div class="city right" aria-hidden="true">
+        <span class="tower"></span>
+        <span class="tower"></span>
+        <span class="tower"></span>
+        <span class="tower"></span>
+      </div>
+      <span class="beam one" aria-hidden="true"></span>
+      <span class="beam two" aria-hidden="true"></span>
+      <span class="beam three" aria-hidden="true"></span>
+      <span class="side-sign left" aria-hidden="true">SSL TRADE</span>
+      <span class="side-sign right" aria-hidden="true">SECRET LANGUAGE<br>TRADE</span>
+
+      <header class="hero">
+        <div class="wings left" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="wings right" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h1 class="title-cn">私语贸易欢迎您</h1>
+        <p class="title-en">Welcome to Secret Language Trade</p>
+        <p class="title-th">ยินดีต้อนรับสู่การค้าภาษาลับ</p>
+        <p class="title-vi">Chào mừng bạn đến với Thương mại Ngôn ngữ Bí mật</p>
+      </header>
+
+      <section class="language-grid" aria-label="Choose language and region entry">
+        <a class="language-card is-selected" href="china/" data-lang="zh" aria-label="进入中国地区入口">
+          <span class="flag flag-china" aria-hidden="true">
+            <img src="assets/flag-china.png" alt="">
+            <span class="star big-star"></span>
+            <span class="star small"></span>
+            <span class="star small"></span>
+            <span class="star small"></span>
+            <span class="star small"></span>
+            <span class="flag-wave"></span>
+          </span>
+          <span class="lang-name big">中文</span>
+          <span class="price-row"><span class="currency">¥</span><span>中国地区价格</span></span>
+          <span class="frame-armor" aria-hidden="true"></span>
+        </a>
+
+        <a class="language-card" href="singapore/" data-lang="en" aria-label="Enter Singapore entry">
+          <span class="flag flag-singapore" aria-hidden="true">
+            <img src="assets/flag-singapore.png" alt="">
+            <span class="crescent"></span>
+            <span class="star s1"></span>
+            <span class="star s2"></span>
+            <span class="star s3"></span>
+            <span class="star s4"></span>
+            <span class="star s5"></span>
+            <span class="flag-wave"></span>
+          </span>
+          <span class="lang-name">English</span>
+          <span class="price-row"><span class="currency">S$</span><span>Price for Singapore</span></span>
+          <span class="frame-armor" aria-hidden="true"></span>
+        </a>
+
+        <a class="language-card" href="thailand/" data-lang="th" aria-label="เข้าสู่หน้าประเทศไทย">
+          <span class="flag flag-thai" aria-hidden="true"><img src="assets/flag-thailand.png" alt=""><span class="flag-wave"></span></span>
+          <span class="lang-name">ภาษาไทย</span>
+          <span class="price-row"><span class="currency">฿</span><span>ราคาในประเทศไทย</span></span>
+          <span class="frame-armor" aria-hidden="true"></span>
+        </a>
+
+        <a class="language-card" href="vietnam/" data-lang="vi" aria-label="Vào trang Việt Nam">
+          <span class="flag flag-vietnam" aria-hidden="true">
+            <img src="assets/flag-vietnam.png" alt="">
+            <span class="star"></span>
+            <span class="flag-wave"></span>
+          </span>
+          <span class="lang-name">Tiếng Việt</span>
+          <span class="price-row"><span class="currency">₫</span><span>Giá tại Việt Nam</span></span>
+          <span class="frame-armor" aria-hidden="true"></span>
+        </a>
+
+        <a class="language-card" href="malaysia/" data-lang="ms" aria-label="Masuk halaman Malaysia">
+          <span class="flag flag-malaysia" aria-hidden="true">
+            <img src="assets/flag-malaysia.png" alt="">
+            <span class="crescent"></span>
+            <span class="star"></span>
+            <span class="flag-wave"></span>
+          </span>
+          <span class="lang-name">Bahasa Melayu</span>
+          <span class="price-row"><span class="currency rm">RM</span><span>Harga di Malaysia</span></span>
+          <span class="frame-armor" aria-hidden="true"></span>
+        </a>
+
+        <a class="language-card" href="laos/" data-lang="lo" aria-label="ເຂົ້າໜ້າລາວ">
+          <span class="flag flag-laos" aria-hidden="true">
+            <img src="assets/flag-laos.png" alt="">
+            <span class="disc"></span>
+            <span class="flag-wave"></span>
+          </span>
+          <span class="lang-name">ພາສາລາວ</span>
+          <span class="price-row"><span class="currency">₭</span><span>ລາຄາໃນລາວ</span></span>
+          <span class="frame-armor" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <footer class="features" aria-label="Service benefits">
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <path d="M24 4 39 9v12c0 11-6 18-15 23C15 39 9 32 9 21V9l15-5Z" stroke-width="2.8"/>
+              <path d="m16 24 5 5 11-13" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span><span class="feature-title">安全可靠</span><span class="feature-sub">SAFE &amp; SECURE</span></span>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <path d="M27 3 10 27h13l-2 18 18-26H25L27 3Z" stroke-width="2.8" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span><span class="feature-title">快速访问</span><span class="feature-sub">FAST ACCESS</span></span>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <circle cx="24" cy="24" r="17" stroke-width="2.8"/>
+              <path d="M7 24h34M24 7c6 7 6 27 0 34M24 7c-6 7-6 27 0 34" fill="none" stroke-width="2.4"/>
+            </svg>
+          </span>
+          <span><span class="feature-title">多语言支持</span><span class="feature-sub">MULTI-LANGUAGE<br>SUPPORT</span></span>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <path d="M12 9h24l8 12-20 22L4 21 12 9Z" stroke-width="2.8" stroke-linejoin="round"/>
+              <path d="M4 21h40M16 9l-5 12 13 22 13-22-5-12" fill="none" stroke-width="2.1"/>
+            </svg>
+          </span>
+          <span><span class="feature-title">优质服务</span><span class="feature-sub">PREMIUM<br>SERVICE</span></span>
+        </div>
+      </footer>
+    </main>
+
+  </body>
+</html>
