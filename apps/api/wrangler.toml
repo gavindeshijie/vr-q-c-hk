@@ -8,12 +8,7 @@ STORAGE_PROVIDER = "local"
 MAX_USDZ_MB = "500"
 MAX_IMAGES_ZIP_MB = "1024"
 
-# Production bindings to add in Cloudflare:
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "vrqc-scans"
-# database_id = "TODO_D1_DATABASE_ID"
-#
-# [[r2_buckets]]
-# binding = "SCANS_BUCKET"
-# bucket_name = "TODO_R2_BUCKET"
+[[d1_databases]]
+binding = "DB"
+database_name = "vrqc-scans"
+database_id = "4920ac15-b948-4664-87e2-2975a54fed51"

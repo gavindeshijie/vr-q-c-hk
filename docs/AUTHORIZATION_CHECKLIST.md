@@ -11,8 +11,8 @@
 推荐目标：
 
 - Web：继续使用 `https://vr.q-c.hk`
-- API：使用 `https://api.vr.q-c.hk`
-- 模型文件：使用 Cloudflare R2 bucket `vrqc-scans`
+- API：使用 `https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev`
+- 模型文件：当前不使用 R2，避免绑定银行卡。第一版先跑通 scan session 和 D1 记录。
 - 数据库：Cloudflare D1 database `vrqc-scans`
 
 需要你提供或授权：
@@ -52,12 +52,12 @@ node scripts/cloudflare/bootstrap-scan-api.mjs
 - 写入 `apps/api/wrangler.toml` 的 D1/R2 binding
 - 执行 `apps/api/schema.sql`
 - 部署 Worker：`vr-q-c-hk-scan-api`
-- 提醒绑定 `https://api.vr.q-c.hk`
+- 发布 Worker API：`https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev`
 
 部署后我会把 GitHub Pages 的构建变量切到：
 
 ~~~bash
-VITE_API_BASE_URL=https://api.vr.q-c.hk
+VITE_API_BASE_URL=https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev
 ~~~
 
 ## B. 你需要授权给我的 Apple / iOS 内容
@@ -130,7 +130,7 @@ Apple：
 Cloudflare API：
 
 ~~~bash
-curl -s https://api.vr.q-c.hk/api/scans
+curl -s https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev/api/scans
 ~~~
 
 应该返回 JSON，不应该返回 GitHub Pages HTML。
@@ -138,7 +138,7 @@ curl -s https://api.vr.q-c.hk/api/scans
 Web 创建扫描：
 
 ~~~bash
-curl -s https://api.vr.q-c.hk/api/scans \
+curl -s https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev/api/scans \
   -H 'content-type: application/json' \
   -d '{"mode":"room","source":"web","deviceHint":"iPhone","userId":null}'
 ~~~
