@@ -17,13 +17,14 @@ type Route =
   | { name: "camera" };
 
 function parseRoute(pathname: string): Route {
-  if (pathname === "/") return { name: "home" };
-  if (pathname === "/scan") return { name: "scan" };
-  if (pathname === "/scan/start") return { name: "scan-start" };
-  if (pathname === "/scan/app/start") return { name: "scan-app-start" };
-  if (pathname === "/scan/history") return { name: "scan-history" };
-  if (pathname === "/scan/camera") return { name: "camera" };
-  const resultMatch = pathname.match(/^\/scan\/result\/([^/]+)$/);
+  const normalized = pathname !== "/" ? pathname.replace(/\/+$/, "") : pathname;
+  if (normalized === "/") return { name: "home" };
+  if (normalized === "/scan") return { name: "scan" };
+  if (normalized === "/scan/start") return { name: "scan-start" };
+  if (normalized === "/scan/app/start") return { name: "scan-app-start" };
+  if (normalized === "/scan/history") return { name: "scan-history" };
+  if (normalized === "/scan/camera") return { name: "camera" };
+  const resultMatch = normalized.match(/^\/scan\/result\/([^/]+)$/);
   if (resultMatch?.[1]) return { name: "scan-result", scanId: decodeURIComponent(resultMatch[1]) };
   return { name: "home" };
 }
