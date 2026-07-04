@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDisplayName</key>
+  <string>VR QC Scanner</string>
+  <key>CFBundleIdentifier</key>
+  <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+  <key>CFBundleVersion</key>
+  <string>1</string>
+  <key>CFBundleShortVersionString</key>
+  <string>0.1</string>
+  <key>UILaunchScreen</key>
+  <dict/>
+  <key>UIApplicationSceneManifest</key>
+  <dict>
+    <key>UIApplicationSupportsMultipleScenes</key>
+    <false/>
+  </dict>
+  <key>NSCameraUsageDescription</key>
+  <string>用于扫描房间或物体并生成 3D 模型。</string>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>如用户选择保存模型或缩略图，需要写入照片资料库。</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>如用户选择读取图片进行物体重建，需要访问照片资料库。</string>
+</dict>
+</plist>

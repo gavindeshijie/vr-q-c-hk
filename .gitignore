@@ -1,6 +1,10 @@
-.DS_Store
 node_modules/
 dist/
+.wrangler/
+.DS_Store
+*.xcuserstate
+DerivedData/
+ios/VRQCScanner/build/
 .env
 .env.*
 !.env.example

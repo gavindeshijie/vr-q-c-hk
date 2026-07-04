@@ -1,4 +1,4 @@
-name: Deploy VR.q-c.hk static site
+name: Deploy VR.q-c.hk web
 
 on:
   push:
@@ -25,15 +25,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web
+        run: npm run build:web
+        env:
+          VITE_PUBLIC_SITE_URL: https://vr.q-c.hk
+          VITE_API_BASE_URL: https://vr.q-c.hk
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
-      - name: Upload static files
+      - name: Upload web build
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: apps/web/dist
 
       - name: Deploy to GitHub Pages
         id: deployment

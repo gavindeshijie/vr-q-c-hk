@@ -1,0 +1,44 @@
+name: VRQCScanner
+options:
+  bundleIdPrefix: hk.qc.vr
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: TEAMID
+    SWIFT_VERSION: 6.0
+targets:
+  VRQCScanner:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: hk.qc.vr.scanner
+        INFOPLIST_FILE: Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Resources/VRQCScanner.entitlements
+    dependencies:
+      - sdk: ARKit.framework
+      - sdk: RealityKit.framework
+      - sdk: RoomPlan.framework
+  VRQCScannerClip:
+    type: application.on-demand-install-capable
+    platform: iOS
+    sources:
+      - path: Sources
+        excludes:
+          - VRQCScannerApp.swift
+          - Views/LocalScanHistoryView.swift
+      - path: AppClip/Sources
+      - path: AppClip/Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: hk.qc.vr.scanner.Clip
+        INFOPLIST_FILE: AppClip/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: AppClip/Resources/VRQCScannerClip.entitlements
+    dependencies:
+      - sdk: ARKit.framework
+      - sdk: RealityKit.framework
+      - sdk: RoomPlan.framework

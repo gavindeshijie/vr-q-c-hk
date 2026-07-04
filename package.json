@@ -1,0 +1,25 @@
+{
+  "name": "vr-q-c-hk",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Independent VR.q-c.hk three-dimensional scan web, API, and iOS scanner workspace.",
+  "scripts": {
+    "dev": "npm run dev -w @vrqc/web",
+    "build": "npm run build -w @vrqc/shared && npm run build -w @vrqc/api && npm run build -w @vrqc/web",
+    "build:web": "npm run build -w @vrqc/shared && npm run build -w @vrqc/web",
+    "build:api": "npm run build -w @vrqc/shared && npm run build -w @vrqc/api",
+    "preview": "npm run preview -w @vrqc/web",
+    "deploy:api": "npm run deploy -w @vrqc/api"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "shared"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

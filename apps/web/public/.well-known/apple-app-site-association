@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TEAMID.hk.qc.vr.scanner"],
+        "components": [
+          {
+            "/": "/scan/app/*",
+            "comment": "Open VR QC Scanner from scan links"
+          }
+        ]
+      }
+    ]
+  },
+  "appclips": {
+    "apps": ["TEAMID.hk.qc.vr.scanner.Clip"]
+  }
+}

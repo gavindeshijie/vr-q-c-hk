@@ -1,0 +1,19 @@
+name = "vr-q-c-hk-scan-api"
+main = "src/index.ts"
+compatibility_date = "2026-07-04"
+
+[vars]
+PUBLIC_SITE_URL = "https://vr.q-c.hk"
+STORAGE_PROVIDER = "local"
+MAX_USDZ_MB = "500"
+MAX_IMAGES_ZIP_MB = "1024"
+
+# Production bindings to add in Cloudflare:
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "vrqc-scans"
+# database_id = "TODO_D1_DATABASE_ID"
+#
+# [[r2_buckets]]
+# binding = "SCANS_BUCKET"
+# bucket_name = "TODO_R2_BUCKET"
