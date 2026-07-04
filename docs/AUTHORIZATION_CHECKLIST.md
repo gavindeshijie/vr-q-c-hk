@@ -8,14 +8,21 @@
 
 ## A. 你需要授权给我的 Cloudflare 内容
 
-推荐目标：
+当前状态：
 
 - Web：继续使用 `https://vr.q-c.hk`
 - API：使用 `https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev`
 - 模型文件：当前不使用 R2，避免绑定银行卡。第一版先跑通 scan session 和 D1 记录。
 - 数据库：Cloudflare D1 database `vrqc-scans`
 
-需要你提供或授权：
+已经完成：
+
+- Cloudflare Worker API 已部署。
+- D1 database 已创建并建表。
+- GitHub Pages 构建变量已经指向 workers.dev API。
+- 不启用 R2，所以不会要求绑定银行卡。
+
+后续只有在你要绑定自定义 API 子域名或启用真实模型文件存储时，才需要补充 Cloudflare 授权：
 
 - Cloudflare 账号登录授权，或 API Token
 - `CLOUDFLARE_ACCOUNT_ID`
@@ -26,10 +33,10 @@ API Token 最小权限建议：
 
 - Account / Workers Scripts / Edit
 - Account / D1 / Edit
-- Account / R2 Storage / Edit
-- Zone / DNS / Edit
-- Zone / Workers Routes / Edit
-- Zone / Zone / Read
+- Account / R2 Storage / Edit，仅当启用 R2 模型存储时需要
+- Zone / DNS / Edit，仅当绑定 `api.vr.q-c.hk` 时需要
+- Zone / Workers Routes / Edit，仅当绑定 `api.vr.q-c.hk` 时需要
+- Zone / Zone / Read，仅当绑定 `api.vr.q-c.hk` 时需要
 
 不要把 token 发到公开地方。可以在本机终端临时设置：
 
@@ -47,9 +54,9 @@ node scripts/cloudflare/bootstrap-scan-api.mjs
 
 这个脚本会：
 
-- 创建或复用 R2 bucket：`vrqc-scans`
+- 默认跳过 R2，保持无绑卡部署；设置 `STORAGE_PROVIDER=r2` 才会创建 R2 bucket
 - 创建或复用 D1 database：`vrqc-scans`
-- 写入 `apps/api/wrangler.toml` 的 D1/R2 binding
+- 写入 `apps/api/wrangler.toml` 的 D1 binding
 - 执行 `apps/api/schema.sql`
 - 部署 Worker：`vr-q-c-hk-scan-api`
 - 发布 Worker API：`https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev`
@@ -114,9 +121,9 @@ node scripts/ios/apply-apple-config.mjs
 
 Cloudflare：
 
-1. 如果用浏览器登录方式，我运行 `npx wrangler login`。
-2. 你在弹出的 Cloudflare 页面点击授权。
-3. 我继续创建 R2/D1、部署 Worker、绑定 API 域名。
+1. 当前无绑卡 API 已完成，不需要再授权 Cloudflare。
+2. 如果以后需要保存 USDZ/GLB 大模型文件，可以选择 Supabase Storage，或你愿意启用 R2 后再授权。
+3. 如果以后需要 `api.vr.q-c.hk` 这个自定义 API 域名，需要把 `q-c.hk` 接入当前 Cloudflare 账号并开启代理。
 
 Apple：
 
@@ -156,6 +163,7 @@ iOS：
 
 ## E. 当前缺口
 
-- Cloudflare Worker API 还没有实际部署，所以网页只能进入本地启动会话，不能上传保存。
 - Apple Team ID / App Store ID 还没有填，所以 Universal Link 还不能真正打开已签名 App。
-- 当前机器没有 Homebrew，不能直接 `brew install xcodegen`。授权后我会优先用你本机可用方式安装 XcodeGen，或改为生成 `.xcodeproj`。
+- iOS 工程已生成：`ios/VRQCScanner/VRQCScanner.xcodeproj`。
+- 主 App 和 App Clip 已通过 Xcode iOS 平台不签名编译。
+- 当前未启用真实大文件存储；扫描 session 可以创建，USDZ/缩略图长期保存还需要 Supabase Storage、R2 或其他对象存储。

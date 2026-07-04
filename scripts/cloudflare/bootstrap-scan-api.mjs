@@ -10,8 +10,10 @@ const schemaFile = path.join(apiDir, "schema.sql");
 
 const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
 const apiToken = process.env.CLOUDFLARE_API_TOKEN;
-const apiHost = process.env.VRQC_API_HOST ?? "api.vr.q-c.hk";
+const apiHost = process.env.VRQC_API_HOST ?? "vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev";
 const d1Name = process.env.VRQC_D1_NAME ?? "vrqc-scans";
+const storageProvider = process.env.STORAGE_PROVIDER ?? "local";
+const enableR2 = storageProvider === "r2";
 const r2Bucket = process.env.VRQC_R2_BUCKET ?? "vrqc-scans";
 const r2PublicBaseUrl = process.env.R2_PUBLIC_BASE_URL ?? "https://assets.vr.q-c.hk";
 
@@ -46,8 +48,12 @@ function tryRun(command, args, options = {}) {
   }
 }
 
-console.log("Creating Cloudflare R2 bucket if needed...");
-tryRun("npx", ["wrangler", "r2", "bucket", "create", r2Bucket], { allowFailure: true });
+if (enableR2) {
+  console.log("Creating Cloudflare R2 bucket if needed...");
+  tryRun("npx", ["wrangler", "r2", "bucket", "create", r2Bucket], { allowFailure: true });
+} else {
+  console.log("Skipping R2. STORAGE_PROVIDER=local keeps the no-card deployment path.");
+}
 
 console.log("Creating Cloudflare D1 database if needed...");
 const d1Output = tryRun("npx", ["wrangler", "d1", "create", d1Name], { capture: true, allowFailure: true });
@@ -69,7 +75,7 @@ console.log("Cloudflare API bootstrap complete.");
 console.log(`API host target: https://${apiHost}`);
 console.log("If custom domain/route was not created automatically, add a Worker Custom Domain in Cloudflare:");
 console.log(`  ${apiHost} -> vr-q-c-hk-scan-api`);
-console.log("Then set GitHub Actions VITE_API_BASE_URL=https://api.vr.q-c.hk");
+console.log(`Then set GitHub Actions VITE_API_BASE_URL=https://${apiHost}`);
 
 function findDatabaseId(output) {
   const match = output.match(/database_id\s*=\s*"([^"]+)"/) ?? output.match(/Created D1 database .*? ([0-9a-f-]{20,})/i);
@@ -77,26 +83,30 @@ function findDatabaseId(output) {
 }
 
 function updateWranglerToml(databaseId) {
+  const vars = [
+    'PUBLIC_SITE_URL = "https://vr.q-c.hk"',
+    `STORAGE_PROVIDER = "${storageProvider}"`,
+    'MAX_USDZ_MB = "500"',
+    'MAX_IMAGES_ZIP_MB = "1024"'
+  ];
+  if (enableR2) vars.push(`R2_PUBLIC_BASE_URL = "${r2PublicBaseUrl}"`);
+
   const next = `name = "vr-q-c-hk-scan-api"
 main = "src/index.ts"
 compatibility_date = "2026-07-04"
 
 [vars]
-PUBLIC_SITE_URL = "https://vr.q-c.hk"
-STORAGE_PROVIDER = "r2"
-R2_PUBLIC_BASE_URL = "${r2PublicBaseUrl}"
-MAX_USDZ_MB = "500"
-MAX_IMAGES_ZIP_MB = "1024"
+${vars.join("\n")}
 
 [[d1_databases]]
 binding = "DB"
 database_name = "${d1Name}"
 database_id = "${databaseId}"
-
+${enableR2 ? `
 [[r2_buckets]]
 binding = "SCANS_BUCKET"
 bucket_name = "${r2Bucket}"
-`;
+` : ""}`;
   fs.writeFileSync(wranglerToml, next);
   console.log(`Updated ${path.relative(repoRoot, wranglerToml)}`);
 }

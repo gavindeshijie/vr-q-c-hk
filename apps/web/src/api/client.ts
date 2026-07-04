@@ -19,7 +19,7 @@ async function requestJson<T>(input: RequestInfo | URL, init?: RequestInit): Pro
       ok: false,
       error: {
         code: "API_UNREACHABLE",
-        message: "扫描 API 当前无法连接。请先部署 Cloudflare Worker API，或检查 api.vr.q-c.hk 域名。"
+        message: "扫描 API 当前无法连接。请检查网络，或确认 workers.dev API 是否在线。"
       }
     };
   }

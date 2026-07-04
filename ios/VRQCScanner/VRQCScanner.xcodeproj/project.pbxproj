@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		020645A6634409EC57EDEE01 /* RoomPlanExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34A4D5E4D78513AFD7FB2B /* RoomPlanExporter.swift */; };
+		0A97DF96126CE78CB5C914D4 /* ScanAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69036CD9B25F29972D1288B3 /* ScanAPIClient.swift */; };
+		1482BA32A6ED162C1DA0C5EE /* VRQCScannerClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB06EB661FFD60524776B06 /* VRQCScannerClipApp.swift */; };
+		1A23EBA23D5838CCB5E29374 /* ModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76C4A8DCB893732EF8B918 /* ModeSelectionView.swift */; };
+		242918144771DFA58621B3BA /* LaunchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E10208532CDF04FEE38B /* LaunchRouter.swift */; };
+		314AA0ACBE85562639AD1AAB /* ScanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E7470210852EF48999623B /* ScanModels.swift */; };
+		3D56A0EE8AC799739368EC5E /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10E1D3DE2AD00EE58E01D77 /* MultipartFormData.swift */; };
+		4ECDB6ABE9A2EBD83A821F70 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 378CB6AA138F1BA503312811 /* ARKit.framework */; };
+		4FF42E89B0F07EA16872B379 /* DeviceCapabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA08EC14C86B7C0AD2975EAC /* DeviceCapabilityView.swift */; };
+		5062B789614DD4A130A7F71D /* ObjectCaptureExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4492172063A64D67682B0B1 /* ObjectCaptureExporter.swift */; };
+		5271192441DCDBEA4ABA1283 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E8F8B7C7698AE2600646 /* UploadView.swift */; };
+		600AB0276F141EF0795B7E38 /* RoomPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA0EE26104F8E89B7D5CF5B /* RoomPlan.framework */; };
+		61CBF93EC37DD78E04F5FD2E /* LaunchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E10208532CDF04FEE38B /* LaunchRouter.swift */; };
+		63658647918F0F8E75E29718 /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF031FC13F023D7B18F2DF53 /* RealityKit.framework */; };
+		643CFC893A2DBC3A3B2AAD9E /* RoomPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA0EE26104F8E89B7D5CF5B /* RoomPlan.framework */; };
+		6EC91B169BF6AFD4FB440766 /* LaunchRouterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE3F2009C0B3AD8E1E5377 /* LaunchRouterViewModel.swift */; };
+		904654EB39BF4416DE329635 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 378CB6AA138F1BA503312811 /* ARKit.framework */; };
+		91904F5C6A331CF4E1CEA7B4 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10E1D3DE2AD00EE58E01D77 /* MultipartFormData.swift */; };
+		97CC009D0ADAA043B872151B /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF031FC13F023D7B18F2DF53 /* RealityKit.framework */; };
+		9B89C6B6CDD4C76FF63EA50F /* RoomScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC81EDEEF0DCD40F0F29D6 /* RoomScanView.swift */; };
+		A3D8ED9EEA584F126DD6DE93 /* RoomScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC81EDEEF0DCD40F0F29D6 /* RoomScanView.swift */; };
+		A904D00E4BFAE7706E8EB72E /* VRQCScannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA00D034B86C17925D57DE /* VRQCScannerApp.swift */; };
+		BACC5AEB3CEF9BC567FF0831 /* ObjectScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BA06507634B9277DB804D5 /* ObjectScanView.swift */; };
+		BD49893AB14C21CA7C2AC4D1 /* ScanModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E7470210852EF48999623B /* ScanModels.swift */; };
+		CADD3F52B90149FB631AB19B /* ObjectCaptureExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4492172063A64D67682B0B1 /* ObjectCaptureExporter.swift */; };
+		CD5F8F1AE65B2A7BE9F1DB7A /* ObjectScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BA06507634B9277DB804D5 /* ObjectScanView.swift */; };
+		DBA1F1AB58B7FBCEAF61317F /* DeviceCapabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA08EC14C86B7C0AD2975EAC /* DeviceCapabilityView.swift */; };
+		DD507671F2CD1A0859FD9A89 /* ScanAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69036CD9B25F29972D1288B3 /* ScanAPIClient.swift */; };
+		E0439C0AE5A4F6127F8D3791 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C24E8F8B7C7698AE2600646 /* UploadView.swift */; };
+		E3EF5F40E5A5A865E5C7B8C6 /* LocalScanHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28905CE96820FABCC32F29 /* LocalScanHistoryView.swift */; };
+		F3093F749CC4192D990713E1 /* RoomPlanExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34A4D5E4D78513AFD7FB2B /* RoomPlanExporter.swift */; };
+		FE21FF1EC3DB5870A8F6E8C7 /* ModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76C4A8DCB893732EF8B918 /* ModeSelectionView.swift */; };
+		FE997504E43DEE23896B392F /* LaunchRouterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE3F2009C0B3AD8E1E5377 /* LaunchRouterViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		006D0558669C6D7754DFDAFE /* VRQCScanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VRQCScanner.entitlements; sourceTree = "<group>"; };
+		09CE3F2009C0B3AD8E1E5377 /* LaunchRouterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRouterViewModel.swift; sourceTree = "<group>"; };
+		1190F723A3C69CBFBF05A0B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2246E8E9868413E4844E9657 /* VRQCScannerClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VRQCScannerClip.entitlements; sourceTree = "<group>"; };
+		315C6096252185A57A49006B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		35DC81EDEEF0DCD40F0F29D6 /* RoomScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomScanView.swift; sourceTree = "<group>"; };
+		378CB6AA138F1BA503312811 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
+		3C24E8F8B7C7698AE2600646 /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
+		3DA0EE26104F8E89B7D5CF5B /* RoomPlan.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RoomPlan.framework; path = System/Library/Frameworks/RoomPlan.framework; sourceTree = SDKROOT; };
+		3F76C4A8DCB893732EF8B918 /* ModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionView.swift; sourceTree = "<group>"; };
+		47CA00D034B86C17925D57DE /* VRQCScannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRQCScannerApp.swift; sourceTree = "<group>"; };
+		4A34A4D5E4D78513AFD7FB2B /* RoomPlanExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomPlanExporter.swift; sourceTree = "<group>"; };
+		50BA06507634B9277DB804D5 /* ObjectScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectScanView.swift; sourceTree = "<group>"; };
+		69036CD9B25F29972D1288B3 /* ScanAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAPIClient.swift; sourceTree = "<group>"; };
+		836A76B53577A3FC952FDCB2 /* VRQCScannerClip.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VRQCScannerClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10E1D3DE2AD00EE58E01D77 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		AF28905CE96820FABCC32F29 /* LocalScanHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalScanHistoryView.swift; sourceTree = "<group>"; };
+		BA08EC14C86B7C0AD2975EAC /* DeviceCapabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCapabilityView.swift; sourceTree = "<group>"; };
+		D3E7470210852EF48999623B /* ScanModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanModels.swift; sourceTree = "<group>"; };
+		DFCB2B1602C3B7B9612E1BDF /* VRQCScanner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = VRQCScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B8E10208532CDF04FEE38B /* LaunchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchRouter.swift; sourceTree = "<group>"; };
+		EF031FC13F023D7B18F2DF53 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
+		F4492172063A64D67682B0B1 /* ObjectCaptureExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCaptureExporter.swift; sourceTree = "<group>"; };
+		FBB06EB661FFD60524776B06 /* VRQCScannerClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRQCScannerClipApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03B829E65CE256CC67C0D2BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				904654EB39BF4416DE329635 /* ARKit.framework in Frameworks */,
+				63658647918F0F8E75E29718 /* RealityKit.framework in Frameworks */,
+				643CFC893A2DBC3A3B2AAD9E /* RoomPlan.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4DBFEAC81A0E9656CCF234C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4ECDB6ABE9A2EBD83A821F70 /* ARKit.framework in Frameworks */,
+				97CC009D0ADAA043B872151B /* RealityKit.framework in Frameworks */,
+				600AB0276F141EF0795B7E38 /* RoomPlan.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0215B1217A5665D3A925D3D1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A10E1D3DE2AD00EE58E01D77 /* MultipartFormData.swift */,
+				69036CD9B25F29972D1288B3 /* ScanAPIClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		3799B6E8ECFE0D16899803FB /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				09CE3F2009C0B3AD8E1E5377 /* LaunchRouterViewModel.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		470E36EF02525CBA58A382D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				378CB6AA138F1BA503312811 /* ARKit.framework */,
+				EF031FC13F023D7B18F2DF53 /* RealityKit.framework */,
+				3DA0EE26104F8E89B7D5CF5B /* RoomPlan.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F16096E7EDD155F49603F0C = {
+			isa = PBXGroup;
+			children = (
+				98484FAEA70243D82B6D3541 /* Resources */,
+				7C783E7E9FDFE986994A6975 /* Resources */,
+				793293816D27C980C8F8F1EB /* Sources */,
+				B3A4622FC848F4199C9A01A3 /* Sources */,
+				470E36EF02525CBA58A382D4 /* Frameworks */,
+				6351B645836EE784612A65A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5434A88ECFE6E4D5FBFF7EA7 /* Scanning */ = {
+			isa = PBXGroup;
+			children = (
+				F4492172063A64D67682B0B1 /* ObjectCaptureExporter.swift */,
+				50BA06507634B9277DB804D5 /* ObjectScanView.swift */,
+				4A34A4D5E4D78513AFD7FB2B /* RoomPlanExporter.swift */,
+				35DC81EDEEF0DCD40F0F29D6 /* RoomScanView.swift */,
+			);
+			path = Scanning;
+			sourceTree = "<group>";
+		};
+		54D5241393345150CF903EC4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3E7470210852EF48999623B /* ScanModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		63294DFED14D56D7F38AF4B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA08EC14C86B7C0AD2975EAC /* DeviceCapabilityView.swift */,
+				E4B8E10208532CDF04FEE38B /* LaunchRouter.swift */,
+				AF28905CE96820FABCC32F29 /* LocalScanHistoryView.swift */,
+				3F76C4A8DCB893732EF8B918 /* ModeSelectionView.swift */,
+				3C24E8F8B7C7698AE2600646 /* UploadView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6351B645836EE784612A65A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFCB2B1602C3B7B9612E1BDF /* VRQCScanner.app */,
+				836A76B53577A3FC952FDCB2 /* VRQCScannerClip.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		793293816D27C980C8F8F1EB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				47CA00D034B86C17925D57DE /* VRQCScannerApp.swift */,
+				54D5241393345150CF903EC4 /* Models */,
+				0215B1217A5665D3A925D3D1 /* Networking */,
+				3799B6E8ECFE0D16899803FB /* Routing */,
+				5434A88ECFE6E4D5FBFF7EA7 /* Scanning */,
+				63294DFED14D56D7F38AF4B9 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		7C783E7E9FDFE986994A6975 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1190F723A3C69CBFBF05A0B8 /* Info.plist */,
+				2246E8E9868413E4844E9657 /* VRQCScannerClip.entitlements */,
+			);
+			name = Resources;
+			path = AppClip/Resources;
+			sourceTree = "<group>";
+		};
+		98484FAEA70243D82B6D3541 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				315C6096252185A57A49006B /* Info.plist */,
+				006D0558669C6D7754DFDAFE /* VRQCScanner.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B3A4622FC848F4199C9A01A3 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FBB06EB661FFD60524776B06 /* VRQCScannerClipApp.swift */,
+			);
+			name = Sources;
+			path = AppClip/Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ECAF276DFD81F4D0FDAD65BE /* VRQCScannerClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF7F654AFDECB395CADA3D8A /* Build configuration list for PBXNativeTarget "VRQCScannerClip" */;
+			buildPhases = (
+				7A3FF5F6FEA60911C1C88BFF /* Sources */,
+				A4DBFEAC81A0E9656CCF234C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VRQCScannerClip;
+			packageProductDependencies = (
+			);
+			productName = VRQCScannerClip;
+			productReference = 836A76B53577A3FC952FDCB2 /* VRQCScannerClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		FDAB774A1851D8EBDD5552F2 /* VRQCScanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30678C7C2BA02F1A9CDCBAA9 /* Build configuration list for PBXNativeTarget "VRQCScanner" */;
+			buildPhases = (
+				46B4E5206A873FC6121D9CE9 /* Sources */,
+				03B829E65CE256CC67C0D2BF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VRQCScanner;
+			packageProductDependencies = (
+			);
+			productName = VRQCScanner;
+			productReference = DFCB2B1602C3B7B9612E1BDF /* VRQCScanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2F8D1A2A317AD3275BE3BCEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					ECAF276DFD81F4D0FDAD65BE = {
+						DevelopmentTeam = TEAMID;
+					};
+					FDAB774A1851D8EBDD5552F2 = {
+						DevelopmentTeam = TEAMID;
+					};
+				};
+			};
+			buildConfigurationList = EB9766622962428B711B39D6 /* Build configuration list for PBXProject "VRQCScanner" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4F16096E7EDD155F49603F0C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6351B645836EE784612A65A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FDAB774A1851D8EBDD5552F2 /* VRQCScanner */,
+				ECAF276DFD81F4D0FDAD65BE /* VRQCScannerClip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46B4E5206A873FC6121D9CE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FF42E89B0F07EA16872B379 /* DeviceCapabilityView.swift in Sources */,
+				61CBF93EC37DD78E04F5FD2E /* LaunchRouter.swift in Sources */,
+				FE997504E43DEE23896B392F /* LaunchRouterViewModel.swift in Sources */,
+				E3EF5F40E5A5A865E5C7B8C6 /* LocalScanHistoryView.swift in Sources */,
+				FE21FF1EC3DB5870A8F6E8C7 /* ModeSelectionView.swift in Sources */,
+				91904F5C6A331CF4E1CEA7B4 /* MultipartFormData.swift in Sources */,
+				CADD3F52B90149FB631AB19B /* ObjectCaptureExporter.swift in Sources */,
+				BACC5AEB3CEF9BC567FF0831 /* ObjectScanView.swift in Sources */,
+				020645A6634409EC57EDEE01 /* RoomPlanExporter.swift in Sources */,
+				A3D8ED9EEA584F126DD6DE93 /* RoomScanView.swift in Sources */,
+				0A97DF96126CE78CB5C914D4 /* ScanAPIClient.swift in Sources */,
+				BD49893AB14C21CA7C2AC4D1 /* ScanModels.swift in Sources */,
+				E0439C0AE5A4F6127F8D3791 /* UploadView.swift in Sources */,
+				A904D00E4BFAE7706E8EB72E /* VRQCScannerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A3FF5F6FEA60911C1C88BFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBA1F1AB58B7FBCEAF61317F /* DeviceCapabilityView.swift in Sources */,
+				242918144771DFA58621B3BA /* LaunchRouter.swift in Sources */,
+				6EC91B169BF6AFD4FB440766 /* LaunchRouterViewModel.swift in Sources */,
+				1A23EBA23D5838CCB5E29374 /* ModeSelectionView.swift in Sources */,
+				3D56A0EE8AC799739368EC5E /* MultipartFormData.swift in Sources */,
+				5062B789614DD4A130A7F71D /* ObjectCaptureExporter.swift in Sources */,
+				CD5F8F1AE65B2A7BE9F1DB7A /* ObjectScanView.swift in Sources */,
+				F3093F749CC4192D990713E1 /* RoomPlanExporter.swift in Sources */,
+				9B89C6B6CDD4C76FF63EA50F /* RoomScanView.swift in Sources */,
+				DD507671F2CD1A0859FD9A89 /* ScanAPIClient.swift in Sources */,
+				314AA0ACBE85562639AD1AAB /* ScanModels.swift in Sources */,
+				5271192441DCDBEA4ABA1283 /* UploadView.swift in Sources */,
+				1482BA32A6ED162C1DA0C5EE /* VRQCScannerClipApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		01806C15782372D5263AB72D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AppClip/Resources/VRQCScannerClip.entitlements;
+				INFOPLIST_FILE = AppClip/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hk.qc.vr.scanner.Clip;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2335E728EFBFAB256518A981 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = TEAMID;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		2AE9428A3266119BEDA81AF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = TEAMID;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		2FC134260503FF4AA3C1AC1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/VRQCScanner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hk.qc.vr.scanner;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F2A82140CFA64DC56123696 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AppClip/Resources/VRQCScannerClip.entitlements;
+				INFOPLIST_FILE = AppClip/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hk.qc.vr.scanner.Clip;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E913B3558124BD15A9FCC533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Resources/VRQCScanner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hk.qc.vr.scanner;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30678C7C2BA02F1A9CDCBAA9 /* Build configuration list for PBXNativeTarget "VRQCScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FC134260503FF4AA3C1AC1C /* Debug */,
+				E913B3558124BD15A9FCC533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AF7F654AFDECB395CADA3D8A /* Build configuration list for PBXNativeTarget "VRQCScannerClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01806C15782372D5263AB72D /* Debug */,
+				8F2A82140CFA64DC56123696 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EB9766622962428B711B39D6 /* Build configuration list for PBXProject "VRQCScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AE9428A3266119BEDA81AF4 /* Debug */,
+				2335E728EFBFAB256518A981 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2F8D1A2A317AD3275BE3BCEA /* Project object */;
+}

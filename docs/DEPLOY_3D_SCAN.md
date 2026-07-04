@@ -22,7 +22,7 @@ MAX_USDZ_MB=500
 MAX_IMAGES_ZIP_MB=1024
 ~~~
 
-第一版 Web 继续由 GitHub Pages 自动部署。API 建议部署到 Cloudflare Worker 或 Cloudflare Pages Functions；如果 API 使用独立子域，例如 `https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev`，把 `VITE_API_BASE_URL` 改成该地址。
+第一版 Web 继续由 GitHub Pages 自动部署。当前 API 已部署到 `https://vr-q-c-hk-scan-api.vr-q-c-hk-gavin.workers.dev`，GitHub Pages 构建变量也已经指向这个地址。当前 `STORAGE_PROVIDER=local`，这是无绑卡方案，只保存扫描记录，不长期保存真实 USDZ/GLB 大文件。
 
 授权清单和自动化脚本见 [AUTHORIZATION_CHECKLIST.md](./AUTHORIZATION_CHECKLIST.md)。
 
@@ -41,12 +41,13 @@ MAX_IMAGES_ZIP_MB=1024
 
 真机调试步骤：
 
-1. 安装 XcodeGen：`brew install xcodegen`。
-2. 进入 `ios/VRQCScanner`。
-3. 运行 `xcodegen generate`。
-4. 用 Xcode 打开 `VRQCScanner.xcodeproj`。
-5. 替换 Team ID，选择真实开发团队。
-6. 用支持 LiDAR 的 iPhone Pro 或 iPad Pro 真机运行。
+1. 用 Xcode 打开 `ios/VRQCScanner/VRQCScanner.xcodeproj`。
+2. 替换 Team ID，选择真实开发团队。
+3. 在 Apple Developer 开启 `hk.qc.vr.scanner` 和 `hk.qc.vr.scanner.Clip`。
+4. 开启 Associated Domains：`applinks:vr.q-c.hk`、`appclips:vr.q-c.hk`。
+5. 用支持 LiDAR 的 iPhone Pro 或 iPad Pro 真机运行。
+
+备注：仓库保留 `ios/VRQCScanner/project.yml`，以后改工程配置可继续用 XcodeGen 生成 `.xcodeproj`。当前 `.xcodeproj` 已经生成并通过主 App / App Clip 的 iOS 平台不签名编译。
 
 ## 3. AASA 配置
 
@@ -132,7 +133,7 @@ curl -s http://127.0.0.1:8787/api/scans \
 1. Push 到 `main`，GitHub Actions 自动构建 `apps/web` 并发布到 GitHub Pages。
 2. 在 GitHub Pages 确认自定义域名 `vr.q-c.hk` 和 HTTPS。
 3. 部署 Cloudflare Worker API：`npm run deploy:api`。
-4. 配置 Worker 环境变量、R2 bucket、D1 数据库。
+4. 配置 Worker 环境变量和 D1 数据库；当前不启用 R2，避免绑卡。
 5. 建表：
 
 ~~~sql
@@ -163,7 +164,7 @@ create table if not exists scans (
 
 ## 7. 后续 TODO
 
-- 用真实 R2 公网域名或签名下载策略替换本地占位 URL。
+- 用 Supabase Storage、R2 或其他对象存储替换本地占位 URL，用来长期保存 USDZ/GLB/缩略图。
 - 接入真实 USDZ 转 GLB 服务，可选 Blender、Reality Converter、外部 Worker 或自建转换服务。
 - App Store Connect 创建 App 后替换 `YOUR_APP_STORE_ID`。
 - 替换 AASA 中的 `TEAMID`。
