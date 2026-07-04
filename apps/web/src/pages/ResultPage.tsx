@@ -4,6 +4,7 @@ import { Download, RefreshCw, RotateCcw } from "lucide-react";
 import { getScan } from "../api/client";
 import { MeasurementPanel } from "../components/MeasurementPanel";
 import { StatusBadge } from "../components/StatusBadge";
+import { DEMO_SCAN_ID, demoScanRecord } from "../scan/demoScan";
 import { rememberScan } from "../scan/history";
 
 const ModelViewer = lazy(() =>
@@ -19,6 +20,18 @@ export function ResultPage({ scanId }: { scanId: string }) {
     let timer: number | undefined;
 
     async function load() {
+      if (scanId === DEMO_SCAN_ID) {
+        setScan(demoScanRecord);
+        rememberScan({
+          scanId: demoScanRecord.scanId,
+          mode: demoScanRecord.mode,
+          status: demoScanRecord.status,
+          createdAt: demoScanRecord.createdAt,
+          thumbnailUrl: demoScanRecord.files.thumbnailUrl
+        });
+        return;
+      }
+
       const response = await getScan(scanId);
       if (cancelled) return;
       if (response.ok) {
@@ -54,8 +67,9 @@ export function ResultPage({ scanId }: { scanId: string }) {
 
       <section className="section-head">
         <p className="eyebrow">扫描结果</p>
-        <h1>扫描结果</h1>
+        <h1>{scanId === DEMO_SCAN_ID ? "示例模型" : "扫描结果"}</h1>
         <p>scanId：<code>{scanId}</code></p>
+        {scanId === DEMO_SCAN_ID && <p className="notice">这是直接放在网站里的静态 GLB 模型，不调用 AI API，也不消耗 token。</p>}
       </section>
 
       {error && <p className="error">{error}</p>}

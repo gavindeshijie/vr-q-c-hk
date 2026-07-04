@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="三维房间示例模型缩略图">
+  <rect width="1200" height="760" fill="#f7f8fa"/>
+  <path d="M170 525 610 295 1010 480 565 690Z" fill="#ffffff" stroke="#17212b" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M170 525V258l440-170v207Z" fill="#d8f2ef" stroke="#0f766e" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M610 88 1010 236v244L610 295Z" fill="#eff6ff" stroke="#334155" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M258 390 430 320v136l-172 78Z" fill="#f8fafc" stroke="#0f766e" stroke-width="5"/>
+  <path d="M740 234 910 292v118l-170-64Z" fill="#bfdbfe" opacity=".72" stroke="#2563eb" stroke-width="5"/>
+  <path d="M520 485 690 410 810 470 642 555Z" fill="#fef3c7" stroke="#92400e" stroke-width="5"/>
+  <path d="M642 555V628L520 552V485Z" fill="#fde68a" stroke="#92400e" stroke-width="5"/>
+  <path d="M642 555 810 470v70L642 628Z" fill="#facc15" opacity=".65" stroke="#92400e" stroke-width="5"/>
+  <path d="M830 570 925 528 995 562 900 608Z" fill="#e2e8f0" stroke="#475569" stroke-width="4"/>
+  <path d="M900 608v56l-70-42v-52Z" fill="#cbd5e1" stroke="#475569" stroke-width="4"/>
+  <path d="M900 608 995 562v54l-95 48Z" fill="#94a3b8" stroke="#475569" stroke-width="4"/>
+  <path d="M74 120h210" stroke="#14b8a6" stroke-width="10" stroke-linecap="round"/>
+  <text x="74" y="92" fill="#0f172a" font-family="Arial, sans-serif" font-size="48" font-weight="800">内置 GLB 示例模型</text>
+  <text x="74" y="158" fill="#475569" font-family="Arial, sans-serif" font-size="28">无需 API token，直接由网站静态文件加载</text>
+</svg>

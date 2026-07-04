@@ -21,6 +21,10 @@ export function HomePage() {
             开始扫描
             <ChevronRight size={18} />
           </a>
+          <a className="secondary-button hero-secondary" href="/scan/result/demo-room">
+            <Cuboid size={20} />
+            查看示例模型
+          </a>
         </div>
         <div className="scan-visual" aria-hidden="true">
           <div className="room-wire">
@@ -38,6 +42,13 @@ export function HomePage() {
           <div>
             <h2>三维扫描</h2>
             <p>房间 RoomPlan、物体 Object Capture、上传、结果页和尺寸估算。</p>
+          </div>
+        </a>
+        <a className="feature-card" href="/scan/result/demo-room">
+          <Box size={26} />
+          <div>
+            <h2>示例模型</h2>
+            <p>直接内置在网站中的 GLB 模型，不需要 API token 或外部生成服务。</p>
           </div>
         </a>
         <div className="feature-card disabled">

@@ -62,6 +62,7 @@ code { background: #eef2f6; border: 1px solid #d8e0ea; padding: 2px 6px; border-
 .primary-button { padding: 0 18px; background: #0f766e; color: #fff; }
 .primary-button:disabled { opacity: .55; cursor: not-allowed; }
 .secondary-button { padding: 0 16px; color: #243241; background: #e9eef4; border: 1px solid #d8e0ea; }
+.hero-secondary { margin-left: 10px; margin-top: 10px; }
 .icon-button { width: 42px; background: #eef2f6; color: #26313b; }
 .notice { background: #eefdfb; border: 1px solid #b7ebe3; color: #115e59; padding: 12px 14px; border-radius: 8px; }
 .notice-strong { font-weight: 800; }
@@ -104,6 +105,7 @@ th { color: #111827; background: #f8fafc; }
   .feature-grid, .mode-grid, .result-layout { grid-template-columns: 1fr; }
   .metric-grid { grid-template-columns: 1fr; }
   .primary-button, .secondary-button { width: 100%; }
+  .hero-secondary { margin-left: 0; }
   .history-item { grid-template-columns: 58px 1fr; }
   .history-item .status { grid-column: 2; justify-self: start; }
 }

@@ -80,6 +80,7 @@ export function ScanPage() {
           <Camera size={20} />
           {isSubmitting ? "正在创建扫描任务" : accepted ? "用 iPhone 开始扫描" : "勾选确认后开始扫描"}
         </button>
+        <a className="secondary-button" href="/scan/result/demo-room">直接查看内置示例模型</a>
         <a className="secondary-button" href="/scan/camera">打开网页相机预览</a>
       </div>
     </main>
