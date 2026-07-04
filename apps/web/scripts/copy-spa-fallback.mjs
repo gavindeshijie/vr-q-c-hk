@@ -11,7 +11,8 @@ const routes = [
   "scan/app/start",
   "scan/history",
   "scan/camera",
-  "scan/result"
+  "scan/result",
+  "scan/result/demo-room"
 ];
 
 copyFileSync(path.join(distDir, "index.html"), path.join(distDir, "404.html"));
