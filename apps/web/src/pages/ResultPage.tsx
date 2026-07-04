@@ -59,6 +59,9 @@ export function ResultPage({ scanId }: { scanId: string }) {
       </section>
 
       {error && <p className="error">{error}</p>}
+      {scanId.startsWith("scan_local_") && (
+        <p className="error">这是 API 未部署时创建的本地启动会话，服务器没有扫描记录。请部署 Cloudflare Worker API 后重新扫描上传。</p>
+      )}
       {!scan && !error && <p className="muted">正在读取扫描任务</p>}
 
       {scan && (

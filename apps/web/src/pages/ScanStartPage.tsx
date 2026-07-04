@@ -10,6 +10,7 @@ export function ScanStartPage() {
   const scanId = params.get("scanId") ?? "";
   const appStartUrl = params.get("appStartUrl") ?? "";
   const returnUrl = params.get("returnUrl") ?? (scanId ? `/scan/result/${scanId}` : "/scan");
+  const apiUnavailable = params.get("apiUnavailable") === "1";
   const [attempted, setAttempted] = useState(false);
   const device = useMemo(() => detectDevice(), []);
 
@@ -34,6 +35,9 @@ export function ScanStartPage() {
       </section>
       <section className="panel">
         <h2><Smartphone size={22} /> 启动状态</h2>
+        {apiUnavailable && (
+          <p className="error">扫描 API 当前还没有部署到 Cloudflare，已先创建本地启动会话。iPhone App 可以被拉起，但扫描结果上传和网站保存需要 API 部署完成后才能正式使用。</p>
+        )}
         <p>{attempted ? "已经尝试通过 Universal Link 打开 VR QC Scanner。" : "即将通过 Universal Link 打开 VR QC Scanner。"}</p>
         {!device.isIOS && <p className="notice">{LIDAR_COMPATIBILITY_NOTICE}</p>}
         <div className="actions">

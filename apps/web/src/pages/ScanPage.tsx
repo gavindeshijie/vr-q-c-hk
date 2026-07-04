@@ -74,10 +74,11 @@ export function ScanPage() {
       </section>
 
       {error && <p className="error">{error}</p>}
+      {!accepted && <p className="notice">请先勾选上方隐私确认，再点击开始扫描。</p>}
       <div className="actions">
         <button className="primary-button" onClick={start} disabled={isSubmitting} type="button">
           <Camera size={20} />
-          {isSubmitting ? "正在创建扫描任务" : "用 iPhone 开始扫描"}
+          {isSubmitting ? "正在创建扫描任务" : accepted ? "用 iPhone 开始扫描" : "勾选确认后开始扫描"}
         </button>
         <a className="secondary-button" href="/scan/camera">打开网页相机预览</a>
       </div>

@@ -18,22 +18,37 @@ export async function createAndLaunchScan(mode: ScanMode): Promise<LaunchResult>
     userId: null
   });
 
-  if (!response.ok) {
-    throw new Error(response.error.message);
-  }
+  const created = response.ok ? response.data : createLocalFallbackScan(mode, response.error.message);
 
   rememberScan({
-    scanId: response.data.scanId,
+    scanId: created.scanId,
     mode,
-    status: response.data.status,
+    status: created.status,
     createdAt: new Date().toISOString()
   });
 
-  window.location.assign(`/scan/start?mode=${encodeURIComponent(mode)}&scanId=${encodeURIComponent(response.data.scanId)}&uploadToken=${encodeURIComponent(response.data.uploadToken)}&appStartUrl=${encodeURIComponent(response.data.appStartUrl)}&returnUrl=${encodeURIComponent(response.data.returnUrl)}`);
+  const fallback = response.ok ? "" : "&apiUnavailable=1";
+  window.location.assign(`/scan/start?mode=${encodeURIComponent(mode)}&scanId=${encodeURIComponent(created.scanId)}&uploadToken=${encodeURIComponent(created.uploadToken)}&appStartUrl=${encodeURIComponent(created.appStartUrl)}&returnUrl=${encodeURIComponent(created.returnUrl)}${fallback}`);
 
   return {
-    created: response.data,
+    created,
     deviceHint: device.deviceHint,
     isLikelyNativeSupported: device.isIOS
+  };
+}
+
+function createLocalFallbackScan(mode: ScanMode, reason: string): CreateScanResponse {
+  const random = crypto.getRandomValues(new Uint32Array(2));
+  const [scanSeed = Date.now(), tokenSeed = Date.now() + 1] = random;
+  const scanId = `scan_local_${Date.now().toString(36)}_${scanSeed.toString(36)}`;
+  const uploadToken = `local_token_${tokenSeed.toString(36)}`;
+  const returnUrl = `${window.location.origin}/scan/result/${scanId}`;
+  const appStartUrl = `${window.location.origin}/scan/app/start?mode=${encodeURIComponent(mode)}&scanId=${encodeURIComponent(scanId)}&uploadToken=${encodeURIComponent(uploadToken)}&returnUrl=${encodeURIComponent(returnUrl)}&apiUnavailable=1&reason=${encodeURIComponent(reason)}`;
+  return {
+    scanId,
+    status: "created",
+    uploadToken,
+    appStartUrl,
+    returnUrl
   };
 }

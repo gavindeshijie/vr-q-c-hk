@@ -8,6 +8,7 @@ export function AppStartPage() {
   const scanId = params.get("scanId") ?? "";
   const uploadToken = params.get("uploadToken") ?? "";
   const returnUrl = params.get("returnUrl") ?? `/scan/result/${scanId}`;
+  const apiUnavailable = params.get("apiUnavailable") === "1";
 
   return (
     <main className="page narrow">
@@ -22,6 +23,7 @@ export function AppStartPage() {
         <p>模式：{mode === "room" ? "房间扫描" : "物体扫描"}</p>
         <p>scanId：<code>{scanId}</code></p>
         <p>上传令牌：{uploadToken ? "已生成，只在当前启动链接中使用" : "缺失"}</p>
+        {apiUnavailable && <p className="error">当前是本地启动会话。请先部署 Cloudflare Worker API，否则 App 扫描完成后无法上传保存。</p>}
         <p className="notice">{LIDAR_COMPATIBILITY_NOTICE}</p>
         <div className="actions">
           <a className="primary-button" href="/scan"><Camera size={20} /> 返回重新开始</a>

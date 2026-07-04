@@ -11,8 +11,29 @@ const configuredBase = import.meta.env.VITE_API_BASE_URL as string | undefined;
 export const apiBaseUrl = (configuredBase && configuredBase !== "/") ? configuredBase.replace(/\/$/, "") : "";
 
 async function parseJson<T>(response: Response): Promise<ApiResponse<T>> {
-  const payload = (await response.json()) as ApiResponse<T>;
-  return payload;
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("application/json")) {
+    return {
+      ok: false,
+      error: {
+        code: response.status === 404 || response.status === 405 ? "API_NOT_DEPLOYED" : "BAD_RESPONSE",
+        message: "扫描 API 当前不可用。GitHub Pages 不能运行 /api/scans，请先部署 Cloudflare Worker API。"
+      }
+    };
+  }
+
+  try {
+    const payload = (await response.json()) as ApiResponse<T>;
+    return payload;
+  } catch {
+    return {
+      ok: false,
+      error: {
+        code: "BAD_RESPONSE",
+        message: "扫描 API 返回格式不正确，请检查后端部署。"
+      }
+    };
+  }
 }
 
 export async function createScan(request: CreateScanRequest): Promise<ApiResponse<CreateScanResponse>> {
