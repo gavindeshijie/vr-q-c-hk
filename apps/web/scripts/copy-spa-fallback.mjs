@@ -5,6 +5,7 @@ import path from "node:path";
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(currentDir, "../dist");
 const routes = [
+  "authorize",
   "scan",
   "scan/start",
   "scan/app/start",
